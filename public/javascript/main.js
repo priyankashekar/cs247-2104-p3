@@ -13,7 +13,7 @@
 
   function connect_to_chat_firebase(){
     /* Include your Firebase link here!*/
-    fb_instance = new Firebase("https://gsroth-p3-v1.firebaseio.com");
+    fb_instance = new Firebase("https://p3-pshekar-sierrakn.firebaseio.com");
 
     // generate new chatroom id or use existing id
     var url_segments = document.location.href.split("/#");
@@ -103,10 +103,11 @@
     // callback for when we get video stream from user.
     var onMediaSuccess = function(stream) {
       // create video element, attach webcam stream to video element
-      var video_width= 160;
-      var video_height= 120;
+      var video_width= 160 * 0.7;
+      var video_height= 160 * 0.7;
       var webcam_stream = document.getElementById('webcam_stream');
       var video = document.createElement('video');
+      video.className = "videoClass";
       webcam_stream.innerHTML = "";
       // adds these properties to the video
       video = mergeProps(video, {
@@ -118,12 +119,30 @@
       video.play();
       webcam_stream.appendChild(video);
 
+      $("#webcam_stream").click(function() {
+          console.log("Video clicked!");
+          $("#webcam_stream").removeClass("webcam_small");
+          $("#webcam_stream").addClass("webcam_expanded");
+          var video = document.getElementsByClassName("videoClass")[0];
+          video.setAttribute("width", "500");
+          video.setAttribute("height", "500");
+      });
+
+      // $(document.body).keypress(function(event) {
+        
+      //     //var li = pressedKeys[event.keyCode];
+      //     if(event.which== 38 && event.shiftKey){
+      //     event.preventDefault();
+      //     console.log("Expand video!");
+      //   }     
+      // });
+
       // counter
-      var time = 0;
-      var second_counter = document.getElementById('second_counter');
-      var second_counter_update = setInterval(function(){
-        second_counter.innerHTML = time++;
-      },1000);
+      // var time = 0;
+      // var second_counter = document.getElementById('second_counter');
+      // var second_counter_update = setInterval(function(){
+      //   second_counter.innerHTML = time++;
+      // },1000);
 
       // now record stream in 5 seconds interval
       var video_container = document.getElementById('video_container');
