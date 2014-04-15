@@ -238,13 +238,33 @@ var username;
     mediaRecorder.video_height = video_height/2;
 
     mediaRecorder.ondataavailable = function (blob) {
+
         //console.log("new data available!");
         video_container.innerHTML = "";
 
         // convert data into base 64 blocks
         blob_to_base64(blob,function(b64_data){
           cur_video_blob = b64_data;
+
           fb_instance_stream.push({m:username+": ", v:cur_video_blob, c: my_color});
+
+          //Extra playback of video since won't work in chat with opaqueness
+          var video = document.createElement("video");
+          video.autoplay = true;
+          video.controls = false; // optional
+          video.loop = false;
+          video.width = 200;
+
+          var source = document.createElement("source");
+          source.src =  URL.createObjectURL(base64_to_blob(b64_data));
+          source.type =  "video/webm";
+
+          video.appendChild(source);
+          var playbackVideoDiv = document.getElementById("playback_video");
+          while (playbackVideoDiv.hasChildNodes()) {
+              playbackVideoDiv.removeChild(playbackVideoDiv.lastChild);
+          }
+          playbackVideoDiv.appendChild(video);
         });
     };
 
@@ -271,7 +291,7 @@ var username;
         $("#topDiv").addClass("div_small");
         $("#bottomDiv").removeClass("div_expanded"); 
         $("#bottomDiv").addClass("div_small"); 
-        
+
         $("#informationToRecord").hide();
         $("#information").show();
         return;
