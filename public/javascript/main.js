@@ -19,6 +19,7 @@ var username;
 
   $(document).ready(function(){
     $("#information").hide();
+    $("#informationToRecord").hide();
     $("#second_counter").hide();
     connect_to_chat_firebase();
     connect_webcam();
@@ -200,6 +201,9 @@ var username;
           $("#topDiv").addClass("div_expanded");
           $("#bottomDiv").removeClass("div_small");
           $("#bottomDiv").addClass("div_expanded");
+
+          $("#informationToRecord").show();
+          $("#information").hide();
         } else {
           // video.setAttribute("width", "\"" + smallVideoSize + "\"");
           // video.setAttribute("height", "\"" + smallVideoSize + "\"");
@@ -212,6 +216,9 @@ var username;
           $("#topDiv").addClass("div_small");
           $("#bottomDiv").removeClass("div_expanded"); 
           $("#bottomDiv").addClass("div_small");
+
+          $("#informationToRecord").hide();
+          $("#information").show();
         }
       });
 
@@ -264,6 +271,9 @@ var username;
         $("#topDiv").addClass("div_small");
         $("#bottomDiv").removeClass("div_expanded"); 
         $("#bottomDiv").addClass("div_small"); 
+        
+        $("#informationToRecord").hide();
+        $("#information").show();
         return;
       }
       if(count == 3) mediaRecorder.start(3000);

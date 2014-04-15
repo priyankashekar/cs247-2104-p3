@@ -12,6 +12,10 @@ a {
 #webcam_stream video {
   border: 2px solid #dcc;
 }
+.instructions {
+  font-weight: bolder;
+  font-size: 20px;
+}
 #conversation {
   padding: 10px 10px 80px;
   overflow-y: scroll;
