@@ -6,20 +6,11 @@ a {
   color: #00B7FF;
 }
 #webcam_stream {
-  position: absolute;
-  bottom: 60px;
-  right: 10px;
+  padding: 20px;
   padding: 0;
 }
 #webcam_stream video {
   border: 2px solid #dcc;
-}
-#second_counter {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  color: white;
-  z-index: 999;
 }
 #conversation {
   padding: 10px 10px 80px;
@@ -53,17 +44,62 @@ a {
   text-align: center;
   padding: 50px 0;
 }
+.opaque_div {
+  position: fixed;
+  background-color: white;
+  opacity: 0.8;
+  z-index: 998;
+}
+.div_small {
+  right: 8px;
+  width: 100px;
+}
+#topDiv.div_small {
+  bottom: 118px;
+  height: 40px;
+}
+#bottomDiv.div_small {
+  bottom: 58px;
+  height: 45px;
+}
+.div_expanded {
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+}
+#topDiv.div_expanded {
+  height: 200px;
+  margin-top: -250px;
+}
+#bottomDiv.div_expanded {
+  height: 235px;
+  margin-top: 15px;
+}
 .webcam_small {
-  position: absolute;
+  position: fixed;
   bottom: 60px;
   right: 10px;
+  height: 100px;
+  width: 100px;
 }
 .webcam_expanded {
   position: fixed;
   top: 50%;
   left: 50%;
-  height: 500;
-  width: 500;
+  height: 500px;
+  width: 500px;
   margin-top: -250px;
   margin-left: -250px;
+}
+#second_counter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font: 40px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+  margin-top: -150px;
+  margin-left: 200px;
+  color: red;
+  z-index: 999;
 }
